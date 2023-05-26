@@ -22,7 +22,7 @@ class NoteDataBase {
   //add notes
   Future<void> addNote(NoteModel noteModel) async {
     var box = await Hive.openBox<NoteModel>(_boxName);
-    await box.add(noteModel);
+    await box.put(noteModel.id, noteModel);
   }
 
   //delete note
@@ -38,9 +38,8 @@ class NoteDataBase {
   }
 
   //update note
-  Future<void> updateNote(
-      {required int index, required NoteModel noteModel}) async {
+  Future<void> updateNote({required NoteModel noteModel}) async {
     var box = await Hive.openBox<NoteModel>(_boxName);
-    await box.put(index, noteModel);
+    await box.put(noteModel.id, noteModel);
   }
 }

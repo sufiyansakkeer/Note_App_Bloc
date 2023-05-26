@@ -38,9 +38,9 @@ class _EditNoteState extends State<EditNote> {
             FilledButton(
               onPressed: () {
                 BlocProvider.of<NoteBloc>(context).add(NoteUpdateEvent(
-                    title: widget.noteModel.title,
-                    contents: widget.noteModel.contents,
-                    index: widget.index));
+                  id: widget.noteModel.id,
+                  contents: _textEditingController.text,
+                ));
                 Navigator.pop(context);
               },
               child: Text("update"),

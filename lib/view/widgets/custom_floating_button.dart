@@ -39,7 +39,10 @@ class CustomFloatingButton extends StatelessWidget {
                       child: const Text('Add note'),
                       onPressed: () {
                         BlocProvider.of<NoteBloc>(context).add(NoteAddEvent(
-                            title: "new", contents: controller.text));
+                            id: DateTime.now()
+                                .microsecondsSinceEpoch
+                                .toString(),
+                            contents: controller.text));
                         // NoteModel(title: "new", contents: controller.text);
                         Navigator.pop(context);
                       },

@@ -13,18 +13,16 @@ class NoteLoadEvent extends NoteEvent {}
 
 // add event
 class NoteAddEvent extends NoteEvent {
-  final String title, contents;
+  final String id, contents;
 
-  const NoteAddEvent({required this.title, required this.contents});
+  const NoteAddEvent({required this.id, required this.contents});
 }
 
 // update event
 class NoteUpdateEvent extends NoteEvent {
-  final String title, contents;
-  final int index;
+  final String id, contents;
 
-  const NoteUpdateEvent(
-      {required this.title, required this.contents, required this.index});
+  const NoteUpdateEvent({required this.id, required this.contents});
 }
 
 //delete event

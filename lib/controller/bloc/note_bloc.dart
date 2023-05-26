@@ -21,16 +21,14 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     });
 
     on<NoteAddEvent>((event, emit) {
-      NoteModel noteModel =
-          NoteModel(title: event.title, contents: event.contents);
+      NoteModel noteModel = NoteModel(id: event.id, contents: event.contents);
       _noteDataBase.addNote(noteModel);
       add(NoteLoadEvent());
     });
 
     on<NoteUpdateEvent>((event, emit) {
-      NoteModel noteModel =
-          NoteModel(title: event.title, contents: event.contents);
-      _noteDataBase.updateNote(index: event.index, noteModel: noteModel);
+      NoteModel noteModel = NoteModel(id: event.id, contents: event.contents);
+      _noteDataBase.updateNote(noteModel: noteModel);
       add(NoteLoadEvent());
     });
   }

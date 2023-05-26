@@ -47,11 +47,13 @@ class _RootPageState extends State<RootPage> {
                 log(state.noteModels.length.toString());
                 return ListTile(
                   title: Text(state.noteModels[index].contents),
-                  onLongPress: () =>
-                      Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => EditNote(
-                        noteModel: state.noteModels[index], index: index),
-                  )),
+                  onLongPress: () {
+                    log(state.noteModels[index].id);
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => EditNote(
+                          noteModel: state.noteModels[index], index: index),
+                    ));
+                  },
                 );
               },
               itemCount: state.noteModels.length,
