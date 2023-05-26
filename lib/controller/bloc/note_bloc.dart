@@ -31,5 +31,10 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       _noteDataBase.updateNote(noteModel: noteModel);
       add(NoteLoadEvent());
     });
+
+    on<NoteDeleteEvent>((event, emit) {
+      _noteDataBase.deleteNote(event.index);
+      add(NoteLoadEvent());
+    });
   }
 }

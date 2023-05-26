@@ -47,7 +47,16 @@ class _RootPageState extends State<RootPage> {
                 log(state.noteModels.length.toString());
                 return ListTile(
                   title: Text(state.noteModels[index].contents),
-                  onLongPress: () {
+                  trailing: IconButton.filled(
+                    onPressed: () {
+                      BlocProvider.of<NoteBloc>(context)
+                          .add(NoteDeleteEvent(index: index));
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                    ),
+                  ),
+                  onTap: () {
                     log(state.noteModels[index].id);
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => EditNote(
